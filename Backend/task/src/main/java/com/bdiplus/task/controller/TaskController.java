@@ -63,17 +63,7 @@ public class TaskController {
         System.out.println(task);
         try {
             System.out.println(task);
-//            Optional<Task> existTask = taskService.findById(task.getTaskId());
 
-//            System.out.println(existTask);
-
-//            if (!existTask.isPresent()) {
-//                Task savedTask = taskService.save(task);
-//                System.out.println(savedTask);
-//                if (savedTask != null) {
-//                    return ResponseHandler.generateResponse(Constant.SUCCESS_ADD_MESSAGE, HttpStatus.CREATED, savedTask);
-//                }
-//            }
             Task savedTask = taskService.save(task);
             System.out.println(savedTask);
             if (savedTask != null) {

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "tasks")
+@Builder
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
