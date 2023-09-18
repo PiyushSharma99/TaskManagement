@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
+
 public class TaskController {
 
     @Autowired
@@ -38,11 +40,13 @@ public class TaskController {
     public ResponseEntity<Object> getTask(@PathVariable Long id) {
         try {
             Optional<Task> searchedTask = taskService.findById(id);
-            if (!searchedTask.isPresent()) {
-                return ResponseHandler.generateResponse(Constant.NO_DATA_MESSAGE, HttpStatus.NO_CONTENT, null);
+            if (searchedTask.isPresent()) {
+                return ResponseHandler.generateResponse(Constant.SUCCESS_GET_MESSAGE, HttpStatus.OK, searchedTask.get());
 
             }
-            return ResponseHandler.generateResponse(Constant.SUCCESS_GET_MESSAGE, HttpStatus.OK, searchedTask.get());
+
+
+            return ResponseHandler.generateResponse(Constant.NO_DATA_MESSAGE, HttpStatus.CONFLICT, null);
 
 
         } catch (HttpClientErrorException e) {
@@ -59,16 +63,21 @@ public class TaskController {
         System.out.println(task);
         try {
             System.out.println(task);
-            Optional<Task> existTask = taskService.findById(task.getTaskId());
+//            Optional<Task> existTask = taskService.findById(task.getTaskId());
 
-            System.out.println(existTask);
+//            System.out.println(existTask);
 
-            if (!existTask.isPresent()) {
-                Task savedTask = taskService.save(task);
-                System.out.println(savedTask);
-                if (savedTask != null) {
-                    return ResponseHandler.generateResponse(Constant.SUCCESS_ADD_MESSAGE, HttpStatus.CREATED, savedTask);
-                }
+//            if (!existTask.isPresent()) {
+//                Task savedTask = taskService.save(task);
+//                System.out.println(savedTask);
+//                if (savedTask != null) {
+//                    return ResponseHandler.generateResponse(Constant.SUCCESS_ADD_MESSAGE, HttpStatus.CREATED, savedTask);
+//                }
+//            }
+            Task savedTask = taskService.save(task);
+            System.out.println(savedTask);
+            if (savedTask != null) {
+                return ResponseHandler.generateResponse(Constant.SUCCESS_ADD_MESSAGE, HttpStatus.CREATED, savedTask);
             }
             return ResponseHandler.generateResponse(Constant.CONFLICT_MESSAGE_TASK_EXIST, HttpStatus.CONFLICT, null);
         } catch (HttpClientErrorException e) {

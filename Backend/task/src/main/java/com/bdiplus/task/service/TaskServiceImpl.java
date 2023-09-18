@@ -3,10 +3,12 @@ package com.bdiplus.task.service;
 import com.bdiplus.task.model.Task;
 import com.bdiplus.task.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskRepository taskRepository;
