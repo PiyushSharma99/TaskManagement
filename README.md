@@ -20,3 +20,19 @@
 
 
 ![alt text](https://github.com/PiyushSharma99/TaskManagement/blob/main/Task%20App%20Screenshot.png?raw=true)
+
+
+## TECHNOLOGIES USED
+
+### Frontend
+
+- HTML, CSS, Javascript
+
+### Backend 
+
+- Springboot 
+- Mysql for runtime database
+- H2 database for testing scope
+- Swagger for API documentation
+- Lombok for shortening of code in Model package
+- Used Mockito and JUnit for testing the API endpoints
